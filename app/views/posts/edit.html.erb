@@ -1,0 +1,30 @@
+<h1>Modification de l'Article : <%= @post.name %></h1>
+<style>  
+  .btn-back {
+    background-color: red; /* Définir la couleur de fond du bouton en rouge */
+    color: white; /* Définir la couleur du texte du bouton en blanc pour le contraste */
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .btn-back:hover {
+    background-color: white; /* Couleur de fond au survol en blanc */
+    color: red; /* Couleur du texte au survol en rouge */
+  }
+</style>
+
+<%= form_for @post do |f| %>
+  <div class="form-group">
+    <label>Titre de l'article</label>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Contenu</label>
+    <%= f.text_area :content, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Modifier l'article</button>
+    <a href="<%= posts_path %>" class="btn btn-back">Retour</a>
+  </div>
+
+<% end %>

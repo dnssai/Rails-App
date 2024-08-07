@@ -1,0 +1,11 @@
+
+<h1>Article : <%= @post.name %> </h1>
+
+<p>Contenu : <%= @post.content %></p>
+
+<p><a href="<%= posts_path %>" class="btn btn-primary">Revenir aux Articles</a></p>
+
+<%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-secondary' %>
+
+
+

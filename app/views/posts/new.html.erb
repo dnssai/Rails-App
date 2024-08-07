@@ -1,0 +1,22 @@
+
+<h1>Création d'Article : </h1>
+
+<%= form_for @post do |f| %> <!-- form_for utilise par défaut la méthode HTTP POST et l'envoi au PostsController grâce à @post-->
+                             <!-- Rails sait que c'est un nouvel enregistrement et utilise create-->
+
+<div class="form-group">
+  <label> Titre de l'article *</label>
+  <%= f.text_field :name, class: "form-control", required: true %>
+</div>
+
+<div class="form-group">
+  <label> Contenu *</label>
+  <%= f.text_area :content, class: "form-control", required: true %>
+</div>
+
+
+  <div class="form-group">
+   <button type="submit" class="btn btn-primary">Créer l'article</button>
+  </div>
+<% end %>
+

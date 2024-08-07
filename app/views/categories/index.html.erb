@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Catégories</title>
+  <style>
+    h1 {
+      color: #007bff;
+      text-align: center;
+    }
+ 
+    .offset-text {
+      padding-left: 30px;
+    }
+
+    .container {
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .btn {
+      margin-right: 5px;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 5px;
+    }
+  </style>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+</head>
+<body>
+  <h1>Catégories</h1>
+  <p> <%= @session.inspect %> </p>
+  <% @categories.each do |categorie| %>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="offset-text"><%= categorie.id %></td>
+          <td class="offset-text"><%= categorie.name %></td>
+          <td>
+            <div class="button-group">
+              <a href="<%= category_path(categorie) %>" class="btn btn-primary">Voir la Catégorie</a>
+              <a href="<%= edit_category_path(categorie) %>" class="btn btn-secondary">Modifier</a>
+              <%= form_with(model: categorie, method: :delete, local: true) do |form| %>
+                <%= form.submit 'Supprimer', data: { confirm: 'Êtes-vous sûr de vouloir supprimer cet article ?' }, class: 'btn btn-danger' %>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+
+  <div class="container">
+    <a href="<%= new_category_path %>" class="btn btn-success">Créer une catégorie</a>
+  </div>
+</body>
+</html>
